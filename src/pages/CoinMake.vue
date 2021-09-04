@@ -3,6 +3,9 @@
     <div class="row">
       <div class="col-sm-9" style="max-width: 700px">
         <strong>สร้างสูตรผสม COIN</strong>
+        <!--
+          <q-btn flat @click="drawerRight = !drawerRight" round dense icon="save" /> 
+          -->         
         <div class="row">
           <div class="col-8 col-sm-6">
               <q-input outlined v-model="text1" placeholder="Campaign Name or Prize" > 
@@ -17,6 +20,7 @@
            </div>
            <div class="col-4 col-sm-6"> 
            </div>
+           <!--
          <div class="row reverse">   
       <div class="col">
         <strong>Perios</strong>
@@ -28,110 +32,36 @@
         <strong>Campaign Name</strong>
       </div>
     </div>
-     <q-btn flat @click="drawerRight = !drawerRight" round dense icon="save" />
-         <q-drawer
-        side="right"
-        v-model="drawerRight"
-        show-if-above
-        bordered
-        :width="500"
-        :breakpoint="600"
-        class="bg-grey-3"
-      >
-        <q-scroll-area class="fit">
-<q-toolbar >
-         <strong>สร้างสูตรผสม COIN</strong>
-        <q-space />
-    
-          <q-btn flat @click="drawerRight = !drawerRight" box dense icon="close" />
-        </q-toolbar>
+   -->
 
+      <CoinDrawer/>
+      </div>
+    </div>
      
-      
-      <div class="q-pa-md">
-        <strong>ชื่อสูตร *</strong>
-         <div class="q-pa-md">
-        <q-input outlined v-model="text2" placeholder="ชื่อสูตร" />
-        </div>
-        
-         <strong>ของรางวัล *</strong>
-          <div class="q-pa-md">
-        <q-input outlined v-model="text2" label="Voucher" />
-        </div>
-         <div class="row">
-      <div class="col">
-      <strong>จำนวนของรางวัล *</strong>
-      <div class="q-pa-md">
-    <q-input
-      v-model.number="model"
-      label="กรุณาระบุตัวเลข"
-      type="number"
-      filled
-      style="max-width: 300px"/>  
-  </div>
-  
-      </div>
-      <div class="col">
-      <strong>ระยะเวลา *</strong>
-      <div class="q-pa-md">
-          <q-input v-model="date" filled type="date"  style="max-width: 200px" />
-      </div>
-    </div>
-    </div>
- 
-     <div class="row">
-      <div class="col">
-       <strong>มังกร *</strong>
-        <div class="q-pa-md">
-           <q-input outlined v-model="text4" label="" style="max-width: " />
-      </div>
-      </div>
-      <div class="col">
-         <strong>ความหน่วงในการออกของมังกร *</strong>
-          <div class="q-pa-md">
-             <q-input
-      v-model.number="model2"
-       label="กรุณาระบุตัวเลข"
-      type="number"
-      filled
-      style="max-width: 350px" />
-   
-      </div>
-      </div>
-    </div>
-         </div>
-
-          
-    <div class="row justify-around">
-      <div class="col-4">
-        
-        <q-btn icon ="close" class="bg-gray-3 text-black" @click="drawerRight = !drawerRight" box dense label="ยกเลิก" />
-      </div>
-      <div class="col-4">
-       <q-btn color="primary" label="บันทึก" />
-      </div>
-    </div>
-        
-   
-      
-
-
-        </q-scroll-area>
-      </q-drawer>
-
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
 import { ref } from 'vue'
+import CoinDrawer from '/src/components/drawers/CoinDrawer.vue'
 
 export default {
+  components:{
+    CoinDrawer
+  },
   setup () {
+     function linkClick (e, go) {
+      e.preventDefault() // we choose when we navigate
+
+      // console.log('triggering navigation in 2s')
+      setTimeout(() => {
+        // console.log('navigating as promised 2s ago')
+        go()
+      }, 2000)
+    }
     
     return {
-      
+      linkClick,
       alert: ref(false),
       confirm: ref(false),
       prompt: ref(false),

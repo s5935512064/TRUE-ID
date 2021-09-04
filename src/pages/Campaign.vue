@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md">
+  <div class="q-pa-xl">
 
     <div class="row">
       <div class="col-sm-9" style="max-width: 700px">

@@ -19,8 +19,15 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer class="bg-dark" v-model="leftDrawerOpen" side="left" overlay elevated>
-      <!-- drawer content -->
+    <q-drawer show-if-above class="bg-dark text-white" v-model="leftDrawerOpen" side="left" elevated>
+      <q-list separator>
+        <EssentialLink
+          v-for="link in essentialLinks"
+          :key="link.title"
+          v-bind="link"
+          @closeDrawer="closeDrawer"
+        />
+      </q-list>
     </q-drawer>
 
     <q-page-container>
@@ -31,13 +38,56 @@
 </template>
 
 <script>
+import EssentialLink from 'components/EssentialLink.vue';
 import { ref } from 'vue'
 
 export default {
+  components: {
+    EssentialLink,
+  },
   setup () {
+    const linksList = [
+      {
+        title: 'สร้าง Campaign',
+        icon: 'format_list_bulleted',
+        link: '/',
+        useMethod: 'createcampaign',
+      },
+      {
+        title: 'Set location ให้มังกรแต่ละสี',
+        icon: 'format_list_bulleted',
+        link: '/',
+        useMethod: 'setlocation',
+      },
+      {
+        title: 'สร้างสูตรผสม Coin',
+        icon: 'format_list_bulleted',
+        link: '/',
+        useMethod: 'coincreate',
+      },
+      {
+        title: 'สร้างรางวัล',
+        icon: 'format_list_bulleted',
+        link: '/',
+        useMethod: 'prizecreate',
+      },
+      {
+        title: 'กำหนดสิทธิ์จับมังกรแต่ละประเภท',
+        icon: 'format_list_bulleted',
+        link: '/',
+        useMethod: 'permission',
+      },
+      {
+        title: 'รายการผู้เล่น',
+        icon: 'format_list_bulleted',
+        link: '/',
+        useMethod: 'playerlist',
+      },
+    ];
     const leftDrawerOpen = ref(true)
 
     return {
+      essentialLinks: linksList,
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value

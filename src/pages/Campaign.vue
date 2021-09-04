@@ -39,7 +39,7 @@
         <CampaignDrawer /> 
       
 
-     <!-- <CampaignTable /> --> 
+      <CampaignTable /> 
    
 
       </div>

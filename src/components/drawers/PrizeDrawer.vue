@@ -33,59 +33,24 @@
           <div class="q-pa-md">
         <q-input outlined v-model="text3" label="Voucher" />
         </div>
-         <div class="row">
-      <div class="col">
-      <strong>จำนวนของรางวัล *</strong>
-      <div class="q-pa-md">
+        
+        <strong>รายละเอียด *</strong>
+    <div class="q-pa-md">
     <q-input
-      v-model.number="model"
-      label="กรุณาระบุตัวเลข"
-      type="number"
-      filled
-      style="max-width: 300px"/>  
-  </div>
-  
-      </div>
-      <div class="col">
-      <strong>ระยะเวลา *</strong>
-      <div class="q-pa-md">
-          <q-input v-model="date" filled type="date"  style="max-width: 200px" />
-      </div>
-    </div>
-    </div>
- 
-     <div class="row">
-      <div class="col">
-       <strong>มังกร *</strong>
-        <div class="q-pa-md">
-          <q-select
-        placeholder=""
+        v-model="textareaModel"
         filled
-        v-model="modelAdd"
-        use-input
-        use-chips
-        multiple
-        hide-dropdown-icon
-        input-debounce="0"
-        new-value-mode="add"
-        style="width: 200px"
-      />
-      </div>
-      </div>
-      <div class="col">
-         <strong>ความหน่วงในการออกของมังกร *</strong>
-          <div class="q-pa-md">
-             <q-input
-      v-model.number="model2"
-       label="กรุณาระบุตัวเลข"
-      type="number"
-      filled
-      style="max-width: 350px" />
+        clearable
+        type="textarea"
+        color="red-12"
+        label="Textarea with shadow text"
+        hint="" />
+       
+     
    
-      </div>
-      </div>
+       </div>
+     
     </div>
-         </div>
+        
 
           
     <div class="row justify-around">

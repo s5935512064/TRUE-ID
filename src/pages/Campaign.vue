@@ -29,7 +29,9 @@
       </div>
     </div>
      <q-btn flat @click="drawerRight = !drawerRight" round dense icon="save" />
+
          <q-drawer
+         overlay
         side="right"
         v-model="drawerRight"
         show-if-above
@@ -100,21 +102,26 @@
       </div>
     </div>
          </div>
-        
-    
-    <div class="row justify-between">
+
+          
+    <div class="row justify-around">
       <div class="col-4">
-        <q-btn class="bg-white text-black" label="ยกเลิก" />
+        
+        <q-btn icon ="close" class="bg-gray-3 text-black" @click="drawerRight = !drawerRight" box dense label="ยกเลิก" />
       </div>
       <div class="col-4">
-         <q-btn color="primary" label="บันทึก" />
+       <q-btn color="primary" label="บันทึก" />
       </div>
     </div>
+        
+   
       
 
 
         </q-scroll-area>
       </q-drawer>
+
+      <CampaignTable />
 
       </div>
     </div>
@@ -123,8 +130,12 @@
 
 <script>
 import { ref } from 'vue'
+import CampaignTable from '/src/components/table/CampaignTable.vue'
 
 export default {
+  components:{
+    CampaignTable
+  },
   setup () {
     
     return {

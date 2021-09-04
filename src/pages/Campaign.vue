@@ -1,37 +1,23 @@
 <template>
   <div class="q-pa-xl">
-
     <div class="row">
       <div class="col-sm-9" style="max-width: 700px">
         <strong>สร้าง CAMPAIGN</strong>
-        
         <div class="row">
           <div class="col-8 col-sm-6">
-
-           <q-input outlined v-model="text" placeholder="Campaign Name or Prize" > 
-           <template v-slot:prepend>
-          <q-icon name="search" />
-        </template>
-        </q-input>
-            
-          </div>
-          <div class="col-4 col-sm-6">
-              <q-input filled v-model="date" mask="date" :rules="['date']">
-      <template v-slot:append>
-        <q-icon name="event" class="cursor-pointer">
-          <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">
-            <q-date v-model="date">
-              <div class="row items-center justify-end">
-                <q-btn v-close-popup label="Close" color="primary" flat />
-              </div>
-            </q-date>
-          </q-popup-proxy>
-        </q-icon>
-      </template>
-    </q-input>
-          </div>
-        </div>
-         <div class="row reverse">
+              <q-input outlined v-model="text1" placeholder="Campaign Name or Prize" > 
+                  <template v-slot:prepend>
+                   <q-icon name="search" />
+                  </template>
+           </q-input>           
+           </div>
+           <div class="col-4 col-sm-6">
+           <q-input v-model="date1" filled type="date" hint="" />
+           </div>
+           </div>
+           <div class="col-4 col-sm-6"> 
+           </div>
+         <div class="row reverse">   
       <div class="col">
         <strong>Perios</strong>
       </div>
@@ -42,73 +28,127 @@
         <strong>Campaign Name</strong>
       </div>
     </div>
-  <q-table
-      title="Treats"
-      :rows="rows"
-      :columns="columns"
-      row-key="name"
-    />
+     <q-btn flat @click="drawerRight = !drawerRight" round dense icon="save" />
+         <q-drawer
+        side="right"
+        v-model="drawerRight"
+        show-if-above
+        bordered
+        :width="500"
+        :breakpoint="600"
+        class="bg-grey-3"
+      >
+        <q-scroll-area class="fit">
+<q-toolbar >
+         <strong>สร้าง CAMPAIGN</strong>
+        <q-space />
+    
+          <q-btn flat @click="drawerRight = !drawerRight" box dense icon="close" />
+        </q-toolbar>
 
+     
+      
+      <div class="q-pa-md">
+        <strong>ชื่อ Campaign *</strong>
+         <div class="q-pa-md">
+        <q-input outlined v-model="text2" label="Campaign" />
+        </div>
+        
+         <strong>ของรางวัล *</strong>
+          <div class="q-pa-md">
+        <q-input outlined v-model="text2" label="Voucher" />
+        </div>
+         <div class="row">
+      <div class="col">
+      <strong>จำนวนของรางวัล *</strong>
+      <div class="q-pa-md">
+    <q-input
+      v-model.number="model"
+      label="กรุณาระบุตัวเลข"
+      type="number"
+      filled
+      style="max-width: 300px"/>  
+  </div>
+  
+      </div>
+      <div class="col">
+      <strong>ระยะเวลา *</strong>
+      <div class="q-pa-md">
+          <q-input v-model="date" filled type="date"  style="max-width: 200px" />
+      </div>
+    </div>
+    </div>
+ 
+     <div class="row">
+      <div class="col">
+       <strong>มังกร *</strong>
+        <div class="q-pa-md">
+           <q-input outlined v-model="text4" label="" style="max-width: " />
+      </div>
+      </div>
+      <div class="col">
+         <strong>ความหน่วงในการออกของมังกร *</strong>
+          <div class="q-pa-md">
+             <q-input
+      v-model.number="model2"
+       label="กรุณาระบุตัวเลข"
+      type="number"
+      filled
+      style="max-width: 350px" />
+   
+      </div>
+      </div>
+    </div>
+         </div>
+        
+    
+    <div class="row justify-between">
+      <div class="col-4">
+        <q-btn class="bg-white text-black" label="ยกเลิก" />
+      </div>
+      <div class="col-4">
+         <q-btn color="primary" label="บันทึก" />
+      </div>
+    </div>
+      
+
+
+        </q-scroll-area>
+      </q-drawer>
 
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
 import { ref } from 'vue'
 
-const columns = [
-  {
-    name: 'name',
-    required: true,
-    label: 'Campaign Name',
-    align: 'left',
-    field: row => row.name,
-    format: val => `${val}`,
-    sortable: true
-  },
-  { name: 'prize', align: 'center', label: 'Prize', field: 'prize', sortable: true },
-  { name: 'period', label: 'Period', field: 'period', sortable: true },
-  
-]
-
-const rows = [
-  {
-    name: 'Campaign A',
-    prize: 'Iphone 12 Pro',
-    period: 6.0,
-    carbs: 24,
-    protein: 4.0,
-    sodium: 87,
-    calcium: '14%',
-    iron: '1%'
-  },
-  {
-    name: 'Campaign B',
-    prize: 'Samsung 5G',
-    period: 9.0,
-    carbs: 37,
-    protein: 4.3,
-    sodium: 129,
-    calcium: '8%',
-    iron: '1%'
-  },
-  
- 
-]
-
 export default {
   setup () {
+    
     return {
-      columns,
-      rows,
-      text: ref(''),
+      
+      alert: ref(false),
+      confirm: ref(false),
+      prompt: ref(false),
+      model1: ref(),
+      model2: ref(),
+      address: ref(''),
+      date1: ref(''),
+      date2: ref(''),
+      columns:ref(''),
+      rows:ref(''),
+      text1: ref(''),
+      text2: ref(''),
+      text3: ref(''),
+      text4: ref(''),
       ph: ref(''),
-      dense: ref(false)
+      dense: ref(false),
+      drawerRight: ref(false)
 
     }
   }
 }
 </script>
+

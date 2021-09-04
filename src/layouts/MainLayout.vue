@@ -4,7 +4,7 @@
     <q-header reveal elevated class="bg-negative text-white">
       <q-toolbar>
         <!-- <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" /> -->
-        <q-toolbar-title>
+        <q-toolbar-title class="q-mx-md">
           <q-avatar style="width: 60px">
             <img src="~src/assets/logo.svg">
           </q-avatar>

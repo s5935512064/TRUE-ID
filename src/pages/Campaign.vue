@@ -42,28 +42,13 @@
         <strong>Campaign Name</strong>
       </div>
     </div>
-     <div class="row reverse">
-      <div class="col">
-        23 Jun 2021
-      </div>
-      <div class="col">
-       Iphone 12 Pro
-      </div>
-      <div class="col">
-        Campaign A
-      </div>
-    </div>
-    <div class="row reverse">
-      <div class="col">
-        25 Jun 2021
-      </div>
-      <div class="col">
-       Iphone 11 Pro
-      </div>
-      <div class="col">
-        Campaign B
-      </div>
-    </div>
+  <q-table
+      title="Treats"
+      :rows="rows"
+      :columns="columns"
+      row-key="name"
+    />
+
 
       </div>
     </div>
@@ -74,12 +59,55 @@
 <script>
 import { ref } from 'vue'
 
+const columns = [
+  {
+    name: 'name',
+    required: true,
+    label: 'Campaign Name',
+    align: 'left',
+    field: row => row.name,
+    format: val => `${val}`,
+    sortable: true
+  },
+  { name: 'prize', align: 'center', label: 'Prize', field: 'prize', sortable: true },
+  { name: 'period', label: 'Period', field: 'period', sortable: true },
+  
+]
+
+const rows = [
+  {
+    name: 'Campaign A',
+    prize: 'Iphone 12 Pro',
+    period: 6.0,
+    carbs: 24,
+    protein: 4.0,
+    sodium: 87,
+    calcium: '14%',
+    iron: '1%'
+  },
+  {
+    name: 'Campaign B',
+    prize: 'Samsung 5G',
+    period: 9.0,
+    carbs: 37,
+    protein: 4.3,
+    sodium: 129,
+    calcium: '8%',
+    iron: '1%'
+  },
+  
+ 
+]
+
 export default {
   setup () {
     return {
+      columns,
+      rows,
       text: ref(''),
       ph: ref(''),
       dense: ref(false)
+
     }
   }
 }

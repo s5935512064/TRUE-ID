@@ -13,6 +13,15 @@ const routes: RouteRecordRaw[] = [
     path: '/:catchAll(.*)*',
     component: () => import('pages/Error404.vue'),
   },
+  {
+    path: '/Campaign',
+    component: () => import('pages/Campaign.vue')
+  },
+  {
+    path: '/make',
+    component: () => import('pages/make.vue')
+  },
+
 ];
 
 export default routes;

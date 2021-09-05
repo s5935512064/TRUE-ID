@@ -1,37 +1,25 @@
 <template>
   <div class="q-pa-xl">
-
     <div class="row">
       <div class="col-sm-9" style="max-width: 700px">
         <strong>สร้าง CAMPAIGN</strong>
-        
         <div class="row">
           <div class="col-8 col-sm-6">
+              <q-input outlined v-model="text1" placeholder="Campaign Name or Prize" > 
+                  <template v-slot:prepend>
+                   <q-icon name="search" />
+                  </template>
+           </q-input>           
+           </div>
+           <div class="col-4 col-sm-6">
+           <q-input v-model="date1" filled type="date" hint="" />
+           </div>
+           </div>
+           <div class="col-4 col-sm-6"> 
+           </div>
 
-           <q-input outlined v-model="text" placeholder="Campaign Name or Prize" > 
-           <template v-slot:prepend>
-          <q-icon name="search" />
-        </template>
-        </q-input>
-            
-          </div>
-          <div class="col-4 col-sm-6">
-              <q-input filled v-model="date" mask="date" :rules="['date']">
-      <template v-slot:append>
-        <q-icon name="event" class="cursor-pointer">
-          <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">
-            <q-date v-model="date">
-              <div class="row items-center justify-end">
-                <q-btn v-close-popup label="Close" color="primary" flat />
-              </div>
-            </q-date>
-          </q-popup-proxy>
-        </q-icon>
-      </template>
-    </q-input>
-          </div>
-        </div>
-         <div class="row reverse">
+           <!--
+         <div class="row reverse">   
       <div class="col">
         <strong>Perios</strong>
       </div>
@@ -42,45 +30,57 @@
         <strong>Campaign Name</strong>
       </div>
     </div>
-     <div class="row reverse">
-      <div class="col">
-        23 Jun 2021
-      </div>
-      <div class="col">
-       Iphone 12 Pro
-      </div>
-      <div class="col">
-        Campaign A
-      </div>
-    </div>
-    <div class="row reverse">
-      <div class="col">
-        25 Jun 2021
-      </div>
-      <div class="col">
-       Iphone 11 Pro
-      </div>
-      <div class="col">
-        Campaign B
-      </div>
-    </div>
+-->
+
+    <!--
+     <q-btn flat @click="drawerRight = !drawerRight" round dense icon="save" />
+  -->
+
+        <CampaignDrawer /> 
+      
+
+      <CampaignTable /> 
+   
 
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
 import { ref } from 'vue'
+import CampaignTable from '/src/components/table/CampaignTable.vue'
+import CampaignDrawer from '/src/components/drawers/CampaignDrawer.vue'
 
 export default {
+  components:{
+    CampaignTable,
+    CampaignDrawer
+  },
   setup () {
+    
     return {
-      text: ref(''),
+       
+      alert: ref(false),
+      confirm: ref(false),
+      prompt: ref(false),
+      model1: ref(),
+      model2: ref(),
+      address: ref(''),
+      date1: ref(''),
+      date2: ref(''),
+      columns:ref(''),
+      rows:ref(''),
+      text1: ref(''),
+      text2: ref(''),
+      text3: ref(''),
+      text4: ref(''),
       ph: ref(''),
-      dense: ref(false)
+      dense: ref(false),
+      drawerRight: ref(false)
+
     }
   }
 }
 </script>
+

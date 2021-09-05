@@ -1,7 +1,10 @@
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div class="q-pa-xl">
 =======
+=======
+>>>>>>> parent of 593b3f5 (Merge pull request #4 from s5935512064/dev-ntw)
   <div class="q-pa-md">
 
 >>>>>>> parent of 593b3f5 (Merge pull request #4 from s5935512064/dev-ntw)

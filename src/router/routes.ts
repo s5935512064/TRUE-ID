@@ -4,16 +4,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/Index.vue') },
-      { path: 'createcampaign', component: () => import('pages/Campaign.vue') },
-      { path: 'setlocation', component: () => import('pages/LocationSet.vue') },
-      { path: 'coincreate', component: () => import('pages/CoinMake.vue') },
-      { path: 'prizecreate', component: () => import('pages/PrizeMake.vue') },
-      { path: 'permission', component: () => import('pages/Permission.vue') },
-      { path: 'playerlist', component: () => import('pages/PlayerList.vue') },
-      
-    ],
+    children: [{ path: '', component: () => import('pages/Index.vue') }],
   },
 
   // Always leave this as last one,
@@ -21,6 +12,14 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/:catchAll(.*)*',
     component: () => import('pages/Error404.vue'),
+  },
+  {
+    path: '/Campaign',
+    component: () => import('pages/Campaign.vue')
+  },
+  {
+    path: '/make',
+    component: () => import('pages/make.vue')
   },
 
 ];

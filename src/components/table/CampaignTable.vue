@@ -1,11 +1,9 @@
 <template>
   <div class="q-pa-md">
-  <strong>สร้าง CAMPAIGN</strong>
-  
     <q-table
       grid
       grid-header
-      title="สร้าง CAMPAIGN"
+      title="Treats"
       :rows="rows"
       :columns="columns"
       row-key="name"
@@ -29,40 +27,76 @@ const columns = [
   {
     name: 'desc',
     required: true,
-    label: 'Campaign Name',
+    label: 'Dessert (100g serving)',
     align: 'left',
     field: row => row.name,
     sortable: true
   },
-  { name: 'prize', align: 'center', label: 'Prize', field: 'prize', sortable: true },
-  { name: 'period', align: 'right',label: 'Period', field: 'period', sortable: true },
- 
+  { name: 'calories', align: 'center', label: 'Calories', field: 'calories', sortable: true },
+  { name: 'fat', label: 'Fat (g)', field: 'fat', sortable: true },
+  { name: 'carbs', label: 'Carbs (g)', field: 'carbs' }
 ]
 
 const rows = [
   {
-    name: 'Iphone 12 Pro',
-    prize: 159,
-    period: 6.0,
-   
+    name: 'Frozen Yogurt',
+    calories: 159,
+    fat: 6.0,
+    carbs: 24
   },
   {
-    name: 'Samsung Galaxy S20',
-    prize: 237,
-    period: 9.0,
-   
+    name: 'Ice cream sandwich',
+    calories: 237,
+    fat: 9.0,
+    carbs: 37
   },
   {
-    name: 'Iphone 11 Pro',
-    prize: 452,
-    period: 25.0,
-    
+    name: 'Eclair',
+    calories: 262,
+    fat: 16.0,
+    carbs: 23
   },
   {
-    name: 'Iphone 12 ',
-    prize: 518,
-    period: 26.0,
-    
+    name: 'Cupcake',
+    calories: 305,
+    fat: 3.7,
+    carbs: 67
+  },
+  {
+    name: 'Gingerbread',
+    calories: 356,
+    fat: 16.0,
+    carbs: 49
+  },
+  {
+    name: 'Jelly bean',
+    calories: 375,
+    fat: 0.0,
+    carbs: 94
+  },
+  {
+    name: 'Lollipop',
+    calories: 392,
+    fat: 0.2,
+    carbs: 98
+  },
+  {
+    name: 'Honeycomb',
+    calories: 408,
+    fat: 3.2,
+    carbs: 87
+  },
+  {
+    name: 'Donut',
+    calories: 452,
+    fat: 25.0,
+    carbs: 51
+  },
+  {
+    name: 'KitKat',
+    calories: 518,
+    fat: 26.0,
+    carbs: 65
   }
 ]
 
@@ -71,7 +105,9 @@ export default {
     return {
       filter: ref(''),
       columns,
-      rows
+      rows,
+      name: 'CampaignTable'
+     
     }
   }
 }

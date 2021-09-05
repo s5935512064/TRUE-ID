@@ -1,6 +1,7 @@
 <template>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div class="q-pa-xl">
 =======
 =======
@@ -8,6 +9,9 @@
   <div class="q-pa-md">
 
 >>>>>>> parent of 593b3f5 (Merge pull request #4 from s5935512064/dev-ntw)
+=======
+  <div class="q-pa-xl">
+>>>>>>> parent of 0230071 (test)
     <div class="row">
       <div class="col-sm-9" style="max-width: 700px">
         <strong>สร้าง CAMPAIGN</strong>

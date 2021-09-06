@@ -6,12 +6,12 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') },
-      { path: 'createcampaign', component: () => import('pages/Campaign.vue') },
-      { path: 'setlocation', component: () => import('pages/LocationSet.vue') },
-      { path: 'coincreate', component: () => import('pages/CoinMake.vue') },
-      { path: 'prizecreate', component: () => import('pages/PrizeMake.vue') },
-      { path: 'permission', component: () => import('pages/Permission.vue') },
-      { path: 'playerlist', component: () => import('pages/PlayerList.vue') },
+      { path: 'createcampaign', component: () => import('src/pages/add-campaign/Campaign.vue') },
+      { path: 'setlocation', component: () => import('src/pages/set-location/LocationSet.vue') },
+      { path: 'coincreate', component: () => import('src/pages/add-coin/CoinMake.vue') },
+      { path: 'prizecreate', component: () => import('src/pages/add-prize/PrizeMake.vue') },
+      { path: 'permission', component: () => import('src/pages/set-permission/Permission.vue') },
+      { path: 'playerlist', component: () => import('src/pages/list-player/PlayerList.vue') },
       
     ],
   },

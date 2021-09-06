@@ -1,7 +1,7 @@
 <template>
     <div class="q-pa-xl">
-        <span><strong>Set Location ให้มังกรแต่ละสี</strong></span>
-
+        <span class="text-h2 text-weight-bold">สร้างสูตรผสม COIN</span>
+ 
     </div>
 </template>
 

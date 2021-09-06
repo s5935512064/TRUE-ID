@@ -9,14 +9,9 @@
           </template>
         </q-input>
      </div>
-
-        /// Table //
-             grid
-            grid-header 
-
       -->
  
-    <q-table         
+    <q-table    
             :rows="rows"
             :columns="columns"
             row-key="name"
@@ -43,8 +38,6 @@ const columns = [
   { name: 'period', align: 'right',label: 'Period', field: 'period', sortable: true },
  
 ]
-
-
 
 const rows = [
   {

@@ -25,8 +25,9 @@
               class="q-py-md border-none outline-none"
               v-model="model" 
               mask="####-##-## - ####-##-##" 
-              :rules="['date']" 
+              :rules="['date']"              
               >
+            
           <template v-slot:append>
             <q-icon name="event" class="cursor-pointer">
               <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">

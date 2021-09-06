@@ -66,7 +66,7 @@ export default {
       model1: ref(),
       model2: ref(),
       address: ref(''),
-      date1: ref(''),
+      date1: ref('00/11/1234'),
       date2: ref(''),
       columns:ref(''),
       rows:ref(''),

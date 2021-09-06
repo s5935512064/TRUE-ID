@@ -1,45 +1,15 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <div class="row">
-      <strong> TEST DEV TRUE ID</strong>
-    </div>
-  </q-page>
+  <div>
+    
+  </div>
 </template>
 
-<script lang="ts">
-import { Todo, Meta } from 'components/models';
-import { defineComponent, ref } from 'vue';
+<script>
+export default {
 
-export default defineComponent({
-  name: 'PageIndex',
-  components: {  },
-  setup() {
-    const todos = ref<Todo[]>([
-      {
-        id: 1,
-        content: 'ct1'
-      },
-      {
-        id: 2,
-        content: 'ct2'
-      },
-      {
-        id: 3,
-        content: 'ct3'
-      },
-      {
-        id: 4,
-        content: 'ct4'
-      },
-      {
-        id: 5,
-        content: 'ct5'
-      }
-    ]);
-    const meta = ref<Meta>({
-      totalCount: 1200
-    });
-    return { todos, meta };
-  }
-});
+}
 </script>
+
+<style>
+
+</style>

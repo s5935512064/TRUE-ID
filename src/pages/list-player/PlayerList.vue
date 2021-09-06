@@ -56,7 +56,7 @@ import PlayerTable from './PlayerTable.vue';
   },
     setup () {
       return {
-        model: ref({ from: '2020/07/08', to: '2020/07/17' })
+        model: ref({ from: '', to: '' })
       }
     }
   }

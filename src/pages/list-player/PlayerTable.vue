@@ -1,7 +1,6 @@
 <template>
   <div>
     <q-table
-        :grid="$q.screen.xl"
         class="my-sticky-header-table"
         :rows="rows"
         :columns="columns"

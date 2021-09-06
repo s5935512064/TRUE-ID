@@ -2,47 +2,64 @@
   <div class="q-pa-xl">
     <div class="row">
       <div class="col-sm-9" style="max-width: 700px">
-        <strong>รางวัล</strong>
-             
+        <strong>สร้าง CAMPAIGN</strong>
         <div class="row">
           <div class="col-8 col-sm-6">
-              <q-input outlined v-model="text1" placeholder="ชื่อรางวัล/รายละเอียด" > 
+              <q-input outlined v-model="text1" placeholder="Campaign Name or Prize" > 
                   <template v-slot:prepend>
                    <q-icon name="search" />
                   </template>
            </q-input>           
-           </div>    
+           </div>
+           <div class="col-4 col-sm-6">
+           <q-input v-model="date1" filled type="date" hint="" />
+           </div>
            </div>
            <div class="col-4 col-sm-6"> 
            </div>
-      <CoinDrawer/>
+
+           <!--
+         <div class="row reverse">   
+      <div class="col">
+        <strong>Perios</strong>
+      </div>
+      <div class="col">
+       <strong>Prize</strong>
+      </div>
+      <div class="col" >
+        <strong>Campaign Name</strong>
       </div>
     </div>
-     
+-->
+
+    <!--
+     <q-btn flat @click="drawerRight = !drawerRight" round dense icon="save" />
+  -->
+
+        <CampaignDrawer /> 
+      
+
+      <CampaignTable /> 
+   
+
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import { ref } from 'vue'
-import CoinDrawer from './PrizeDrawer.vue'
+import CampaignTable from '/src/components/table/CampaignTable.vue'
+import CampaignDrawer from '/src/components/drawers/CampaignDrawer.vue'
 
 export default {
   components:{
-    CoinDrawer
+    CampaignTable,
+    CampaignDrawer
   },
   setup () {
-     function linkClick (e, go) {
-      e.preventDefault() // we choose when we navigate
-
-      // console.log('triggering navigation in 2s')
-      setTimeout(() => {
-        // console.log('navigating as promised 2s ago')
-        go()
-      }, 2000)
-    }
     
     return {
-      linkClick,
       alert: ref(false),
       confirm: ref(false),
       prompt: ref(false),

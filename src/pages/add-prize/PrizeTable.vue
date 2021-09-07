@@ -1,60 +1,90 @@
 <template>
   <div class="q-pa-md">
 
-       <!--
-   <div>
+<!--
+  <div class="q-pa-md">  
+  <q-input
+               v-model="filter" 
+              style="max-width: 250px"
+              outlined
+              dense
+              bg-color="white"
+              color="black"
+              class="q-my-md border-none outline-none"
+              placeholder="ชื่อรางวัล/รายละเอียด"
+            >
+              <template v-slot:prepend>
+                <q-icon name="search" />
+              </template>
+        </q-input>   
+
+  </div>
+-->
+ 
+    <q-table
+      :grid="$q.screen.xl"
+      grid-header
+     
+      :rows="rows"
+      :columns="columns"
+      row-key="name"
+      :filter="filter"
+      hide-header
+      
+
+    >
+    <!--
+      <template v-slot:top-left>
         <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
           <template v-slot:append>
             <q-icon name="search" />
           </template>
         </q-input>
-     </div>
+      </template>
       -->
- 
-    <q-table  
-            grid 
-            :rows="rows"
-            :columns="columns"
-            row-key="name"
-            :filter="filter"
-            hide-header
-    >
     </q-table>
-
   </div>
 </template>
+
+
 <script>
 import { ref } from 'vue'
 
 const columns = [
-  {
-    name: 'campaign name',
-    required: true,
-    label: 'Campaign Name',
-    align: 'left',
-    field: row => row.name,
-    sortable: true
-  },
-  { name: 'prize', align: 'center', label: 'Prize', field: 'prize', sortable: true },
-  { name: 'period', align: 'right',label: 'Period', field: 'period', sortable: true },
- 
+
+   { name: 'image',align: 'left', label: 'รูป', field: 'image', sortable: true },
+   { name: 'campaignname',align: 'center', label: 'ชื่อรางวัล', field: 'campaignname', sortable: true },
+   { name: 'period', align: 'right', label: 'รายละเอียด', field: 'period', sortable: true },
+  
 ]
 
 const rows = [
   {
-    name: 'Iphone 12 Pro',
-    prize: 10,
-    period: '20/05/2021',
+    image: 'รูป 1',
+    campaignname: 'Iphone 12 pro',
+    period: 'Iphone 12 pro',
    
   },
   {
-    name: 'Samsung Galaxy',
-    prize: 12,
-    period: '25/05/2021',
-   
+    image: 'รูป 2',
+    campaignname: 'Samsung 5G',
+    period: 'Samsung 5G',
+    
   },
- 
- 
+  {
+    image: 'รูป 3',
+    campaignname: 'Iphone 11 pro',
+    period: 'Iphone 11 pro',
+    
+  },
+{
+    image: 'รูป 4',
+    campaignname: 'Nokia 3310',
+    period: 'Nokia 3310',
+    
+  },
+
+
 ]
 
 export default {

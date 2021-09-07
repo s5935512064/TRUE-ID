@@ -43,6 +43,7 @@
         prize: '500',
         location: 'Siam Center',
       },
+      
     ];
 
 export default {

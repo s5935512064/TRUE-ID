@@ -3,6 +3,7 @@
       <span class="text-h6 text-weight-bold">รางวัล</span>
      <div class="row items-center q-gutter-x-md">
         <q-input
+              v-model="filter" 
               style="max-width: 350px"
               outlined
               dense
@@ -38,7 +39,8 @@ import PrizeDrawer from './PrizeDrawer.vue';
   },
     setup () {
       return {
-        model: ref({ from: '2020/07/08', to: '2020/07/17' })
+        model: ref({ from: '2020/07/08', to: '2020/07/17' }),
+        filter: ref(''),
       }
     }
   }

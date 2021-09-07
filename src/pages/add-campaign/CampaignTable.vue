@@ -1,81 +1,147 @@
 <template>
+
+
+
   <div class="q-pa-md">
 
-       <!--
-   <div>
-        <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
-          <template v-slot:append>
-            <q-icon name="search" />
-          </template>
-        </q-input>
-     </div>
+       
+    <div class="row items-start">
 
-        /// Table //
-             grid
-            grid-header 
+      <div class="col">
+      <div class="q-px-md">
+      <strong>Campaign Name</strong>
+      </div>     
+      </div>
 
-      -->
-      
+      <div class="col">
+      <div class="q-px-xl">
+       <strong>Prize</strong>
+      </div>
+      </div>
+
+      <div class="col">
+      <div class="q-px-xl">
+      <strong>Period</strong>
+      </div>
+      </div>
+
+    </div>
+
      
-              
+       <div class="q-py-md">
     <q-table
-            
-            grid
-            
-            :rows="rows"
-            :columns="columns"
-            row-key="name"
-            :filter="filter"
-            
-    >
-    </q-table>
-        
+      :grid="$q.screen.xl"
+      grid-header
+      :rows="rows"
+      :columns="columns"
+      row-key="name"
+      :filter="filter"
+      hide-header   
+      v-model:pagination="pagination"
+      hide-pagination
+    />
+    </div>
+
  
+
+
+ <q-footer bordered class="bg-grey-1 text-primary">
+        
+             <div class="row justify-left q-px-md">
+      <q-pagination
+        v-model="pagination.page"
+        color="red-8"
+        :max="pagesNumber"
+        size="md"
+      />
+    </div>
+        
+      </q-footer>
+  
   </div>
 </template>
+
 <script>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const columns = [
-  {
-    name: 'campaign name',
-    required: true,
-    label: 'Campaign Name',
-    align: 'left',
-    field: row => row.name,
-    sortable: true
-  },
+
+  { name: 'campaignname',align: 'left',  label: 'Campaign Name', field: 'campaignname', sortable: true },
   { name: 'prize', align: 'center', label: 'Prize', field: 'prize', sortable: true },
-  { name: 'period', align: 'right',label: 'Period', field: 'period', sortable: true },
+  { name: 'period',align: 'right', label: 'Period', field: 'period', sortable: true },
  
 ]
 
-
-
 const rows = [
   {
-    name: 'Iphone 12 Pro',
-    prize: 10,
-    period: '20/05/2021',
+   
+    campaignname: 'Campaign A',
+    prize: 'Iphone 12 Pro',
+    period: '20/02/2021'
    
   },
   {
-    name: 'Samsung Galaxy',
-    prize: 12,
-    period: '25/05/2021',
+   
+    campaignname:'Campaign B',
+    prize: 'Nokia 3310',
+    period: '25/09/2021'
+    
+  },
+  {
+   
+    campaignname: 'Campaign C',
+    prize: 'Iphone 12 Pro',
+    period: '22/11/2021'
    
   },
- 
- 
+  {
+   
+    campaignname: 'Campaign D',
+    prize: 'Samsung 5F',
+    period: '11/08/2021'
+    
+  },
+  {
+   
+    campaignname: 'Campaign D',
+    prize: 'Samsung 5F',
+    period: '11/08/2021'
+    
+  },
+  {
+   
+    campaignname: 'Campaign D',
+    prize: 'Samsung 5F',
+    period: '11/08/2021'
+    
+  },
+  {
+   
+    campaignname: 'Campaign D',
+    prize: 'Samsung 5F',
+    period: '11/08/2021'
+    
+  },
+
+  
 ]
 
 export default {
   setup () {
+    const pagination = ref({
+      sortBy: 'desc',
+      descending: false,
+      page: 1,
+      rowsPerPage: 3
+      // rowsNumber: xx if getting data from a server
+    })
+
     return {
-      filter: ref(''),
+      pagination,
       columns,
       rows,
-    
+
+      pagesNumber: computed(() => Math.ceil(rows.length / pagination.value.rowsPerPage))
     }
   }
 }

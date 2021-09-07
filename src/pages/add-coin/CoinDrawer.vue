@@ -1,109 +1,105 @@
 <template>
-     <div class="q-pa-xl">
-      <q-drawer
+
+   <div class="q-pa-xl">
+    <q-drawer
         overlay
         side="right"
         v-model="drawerRight"
         show-if-above
         bordered
-        :width="500"
+        :width="600"
+        :height="auto"
         :breakpoint="600"
-        class="bg-grey-3">
-        <q-scroll-area class="fit"> 
-        <q-toolbar >
-         <strong>สร้างสูตรผสม COIN</strong>
+        class="bg-grey-1">
 
-        <q-space />
+      <div class="q-pa-md">
+        <q-layout container style="width:auto; height:870px;"  >
+        
+            <q-toolbar>
+                <q-toolbar-title > 
+                    <span class="text-h6 text-weight-bold">สร้างสูตรผสม COIN</span>   
+                </q-toolbar-title>
                     <q-btn flat @click="drawerRight = !drawerRight" box dense icon="close" />
-        </q-toolbar>
+            </q-toolbar>    
+            <q-separator />   
+                      
+            <q-card-section class="text-left">
+                <div class="q-pb-sm">
+                <span ><strong >ชื่อสูตร *</strong></span>
+                </div>
+                
+                    <q-input outlined v-model="text3" label="สูตร"/>
+            </q-card-section>
 
-    <div class="q-pa-md">
-        <strong>ชื่อสูตร *</strong>
-         <div class="q-pa-md">
-        <q-input outlined v-model="text2" placeholder="Formula Name" />
-        </div>
-        
-         <strong>ของรางวัล *</strong>
-          <div class="q-pa-md">
-        <q-input outlined v-model="text3" label="Voucher" />
-        </div> 
+                      
+            <q-card-section class="text-left">
+                <div class="q-pb-sm">
+                <span ><strong >ของรางวัล *</strong></span>
+                </div>
+                
+                    <q-input outlined v-model="text3" label="Voucher"/>
+            </q-card-section>
 
-<div class="q-pa-md">
-  <div class="row">
-      <div class="col">
-        BLACK 20
-      </div>
-      <div class="col">
-        RED 20
-      </div>
-       <div class="col">
-        BLUE 20
-      </div>
-    </div>
-    </div>
-<div class="q-pa-md">
-    <div class="row">
-      <div class="col">
-        GREEN 20
-      </div>
-      <div class="col">
-        WHITE 20
-      </div>
-     </div>
-    </div>
-    </div>
-    
+            <q-card-section class="text-left">
+              <div class="row">
+                  <div class="col-6 col-md-4 text-black"><strong>BLACK 20</strong></div>
+                  <div class="col-6 col-md-4 text-red"><strong>RED 20</strong></div>
+                  <div class="col-6 col-md-4 text-blue"><strong>BLUE 20</strong></div>
+                  <div class="col-6 col-md-4 text-green"><strong>GREEN 20</strong></div>
+                  <div class="col-6 col-md-4 text-white"><strong>WHITE 20</strong></div>
+              </div>
 
-          
-    <div class="row justify-around">
-      <div class="col-4">
-        
-        <q-btn icon ="close" class="bg-gray-3 text-black" @click="drawerRight = !drawerRight" box dense label="ยกเลิก" />
-      </div>
-      <div class="col-4">
-       <q-btn color="primary" label="บันทึก" />
-      </div>
-    </div>
+            </q-card-section>
+
+         
+      <q-footer bordered class="bg-grey-1 text-primary">
+        <q-tabs no-caps active-color="primary" indicator-color="transparent" class="text-grey" v-model="tab">
+        <div class="q-py-sm">
+          <q-btn icon ="close" class="bg-gray-1 text-black" @click="drawerRight = !drawerRight" box dense label="ยกเลิก" />
+          </div>
+          <q-space/>
+          <div class="q-py-sm">
+          <q-btn icon ="close" class="bg-primary text-white" @click="drawerRight = !drawerRight" box dense label="บันทึก" />
+          </div>
+        </q-tabs>
+      </q-footer>
+
+      
+    </q-layout>   
+  </div>
 
 
- </q-scroll-area>
+ 
   </q-drawer>
 
+  
+  </div>
 
-     </div>
+  
 </template>
 
 <script>
 import { ref } from 'vue'
 
+
+
 export default{
 
-    name:'CoinDrawer',
 
+    name:'PrizeDrawer',
     setup(){
+
         return{
-            alert: ref(false),
-      confirm: ref(false),
-      prompt: ref(false),
-      model1: ref(),
-      model2: ref(),
-      address: ref(''),
-      date1: ref(''),
-      date2: ref(''),
-      columns:ref(''),
-      rows:ref(''),
-      text1: ref(''),
-      text2: ref(''),
-      text3: ref(''),
-      text4: ref(''),
-      ph: ref(''),
-      dense: ref(false),
-      drawerRight: ref(false)
 
-
+             drawerRight: ref(false),
+             text1: ref(''),
+             text2: ref(''),
+             dense: ref(false)
 
         }
+
     }
 }
+
 
 </script>

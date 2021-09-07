@@ -9,17 +9,17 @@
               bg-color="white"
               color="black"
               class="q-my-md border-none outline-none"
-              placeholder="ค้นหา User ID"
+              placeholder="ชื่อรางวัล/รายละเอียด"
             >
               <template v-slot:prepend>
                 <q-icon name="search" />
               </template>
         </q-input>
-       
-       
+ 
      </div>
       <PrizeTable/>
-      <PrizeDrawer/>
+      <PrizeDrawer/> 
+     
 
     </div>
 </template>
@@ -29,10 +29,12 @@ import { ref } from 'vue';
 import PrizeTable from './PrizeTable.vue';
 import PrizeDrawer from './PrizeDrawer.vue';
 
+
   export default {
   components: { 
     PrizeTable ,
     PrizeDrawer
+   
   },
     setup () {
       return {

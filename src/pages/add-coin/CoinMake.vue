@@ -43,21 +43,23 @@
         </div>
      </div>
       <CoinTable />
-      <CoinDrawer />
+    <CoinDrawer /> 
+    
 
     </div>
 </template>
 
 <script>
 import { ref } from 'vue';
-import CoinDrawer from './CoinDrawer.vue';
+// import CoinDrawer from './CoinDrawer.vue';
 import CoinTable from './CoinTable.vue';
+import CoinDrawer from './CoinDrawer.vue';
 
   export default {
     
   components: { 
     CoinTable,
-    CoinDrawer,
+    CoinDrawer
 
   },
     setup () {

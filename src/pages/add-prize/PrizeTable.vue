@@ -11,7 +11,8 @@
      </div>
       -->
  
-    <q-table    
+    <q-table  
+            grid 
             :rows="rows"
             :columns="columns"
             row-key="name"

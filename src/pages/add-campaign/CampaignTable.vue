@@ -15,16 +15,22 @@
             grid-header 
 
       -->
- 
-    <q-table         
+      
+     
+              
+    <q-table
+            
+            grid
+            
             :rows="rows"
             :columns="columns"
             row-key="name"
             :filter="filter"
-            hide-header
+            
     >
     </q-table>
-
+        
+ 
   </div>
 </template>
 <script>
@@ -68,8 +74,10 @@ export default {
     return {
       filter: ref(''),
       columns,
-      rows
+      rows,
+    
     }
   }
 }
 </script>
+

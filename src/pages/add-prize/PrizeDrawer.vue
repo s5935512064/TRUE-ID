@@ -7,99 +7,94 @@
         v-model="drawerRight"
         show-if-above
         bordered
-        :width="500"
+        :width="600"
         :breakpoint="600"
-        class="bg-grey-3">
-        <q-scroll-area class="fit"> 
-        <q-toolbar >
-         <strong>สร้างของรางวัล</strong>
+        class="bg-grey-1">
 
-        <q-space />
-                    <q-btn flat @click="drawerRight = !drawerRight" box dense icon="close" />
-        </q-toolbar>
-
-    <div class="q-pa-md">
-        <strong>รูปของรางวัล *</strong>
-         <div class="q-pa-md">
-       <q-uploader
-      url="http://localhost:4444/upload"
-      icon="X-Custom-Timestamp"
-    
-      style="max-width: 150px"
-    />
-        </div>
+      <div class="q-pa-md">
+        <q-layout container style="width:auto; height:870px;" >
         
-         <strong>ชื่อของรางวัล *</strong>
+            <q-toolbar>
+                <q-toolbar-title > 
+                    <span class="text-h6 text-weight-bold">สร้างของรางวัล</span>   
+                </q-toolbar-title>
+                    <q-btn flat @click="drawerRight = !drawerRight" box dense icon="close" />
+            </q-toolbar>    
+            <q-separator />   
+                  
+         <div class="q-pa-md">
+
+  <span ><strong >รูปของรางวัล *</strong></span>
+    <q-card-section class="text-left">
+    
+    <q-btn 
+       no-caps
+       icon="add "
+       style="border: dashed 2px #C2C2C2; height:150px; width:130px;  "
+       flat :ripple="false"
+       label="Upload jpeg.jpg.png"
+       >
+        </q-btn>
+    </q-card-section>
+    </div>
+        
+    <strong>ชื่อของรางวัล *</strong>
           <div class="q-pa-md">
         <q-input outlined v-model="text3" label="Voucher" />
         </div>
         
         <strong>รายละเอียด *</strong>
     <div class="q-pa-md">
-    <q-input
+    <q-input class="bg-grey-0 "
         v-model="textareaModel"
         filled
         clearable
         type="textarea"
-        color="red-12"
-        label=""
-        hint="" />
-       
-     
-   
-       </div>
-     
-    </div>
+        />
         
-
-          
-    <div class="row justify-around">
-      <div class="col-4">
-        
-        <q-btn icon ="close" class="bg-gray-3 text-black" @click="drawerRight = !drawerRight" box dense label="ยกเลิก" />
-      </div>
-      <div class="col-4">
-       <q-btn color="primary" label="บันทึก" />
-      </div>
     </div>
+      <q-footer bordered class="bg-grey-1 text-primary">
+        <q-tabs no-caps active-color="primary" indicator-color="transparent" class="text-grey" v-model="tab">
+          <q-btn icon ="close" class="bg-gray-1 text-black" @click="drawerRight = !drawerRight" box dense label="ยกเลิก" />
+          <q-space/>
+           <q-btn color="primary" label="บันทึก" />
+        </q-tabs>
+      </q-footer>
+
+      
+    </q-layout>   
+  </div>
 
 
- </q-scroll-area>
+ 
   </q-drawer>
 
-    </div>
+  
+  </div>
+
+  
 </template>
 
 <script>
 import { ref } from 'vue'
 
+
+
 export default{
+
 
     name:'PrizeDrawer',
     setup(){
 
         return{
-     modelAdd: ref(null),
-      alert: ref(false),
-      confirm: ref(false),
-      prompt: ref(false),
-      model1: ref(),
-      model2: ref(),
-      address: ref(''),
-      date1: ref(''),
-      date2: ref(''),
-      columns:ref(''),
-      rows:ref(''),
-      text1: ref(''),
-      text2: ref(''),
-      text3: ref(''),
-      text4: ref(''),
-      ph: ref(''),
-      dense: ref(false),
-      drawerRight: ref(false)
-         
+
+             drawerRight: ref(false),
+             textareaModel: ref(''),
+             text3: ref('')
+
 
         }
+
     }
 }
 

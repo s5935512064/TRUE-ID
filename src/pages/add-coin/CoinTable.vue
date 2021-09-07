@@ -12,6 +12,7 @@
       -->
  
     <q-table    
+            grid
             :rows="rows"
             :columns="columns"
             row-key="name"

@@ -43,7 +43,10 @@
         </div>
      </div>
       <CampaignTable />
-      <CampaignDrawer />
+      <CampaignDrawer />  
+      
+     
+     
 
     </div>
 </template>
@@ -53,10 +56,14 @@ import { ref } from 'vue';
 import CampaignTable from './CampaignTable.vue';
 import CampaignDrawer from './CampaignDrawer.vue';
 
+
+
   export default {
   components: { 
     CampaignTable,
     CampaignDrawer,
+  
+  
 
   },
     setup () {

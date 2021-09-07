@@ -18,6 +18,7 @@ import {
  * with the Store instance.
  */
 
+
 export interface StateInterface {
   // Define your own store structure, using submodules if needed
   // example: ExampleStateInterface;

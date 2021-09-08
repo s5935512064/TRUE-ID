@@ -24,7 +24,7 @@
               color="black"
               class="q-py-md border-none outline-none"
               v-model="model" 
-              mask="####-##-## - ####-##-##" 
+              mask="yyyy-MM-dd - yyyy-MM-dd" 
               :rules="['date']"              
               >
             

@@ -19,13 +19,13 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer show-if-above class="bg-dark text-white" v-model="leftDrawerOpen" side="left" elevated>
+    <q-drawer show-if-above class="bg-dark text-white" v-model="leftDrawer" side="left" elevated>
       <q-list separator>
         <EssentialLink
           v-for="link in essentialLinks"
           :key="link.title"
           v-bind="link"
-          @closeDrawer="closeDrawer"
+       
         />
       </q-list>
     </q-drawer>
@@ -42,6 +42,14 @@ import EssentialLink from 'components/EssentialLink.vue';
 import { ref } from 'vue'
 
 export default {
+
+   data() {
+  return {
+    leftDrawer : true
+  }
+},
+
+ 
   components: {
     EssentialLink,
   },
@@ -87,6 +95,7 @@ export default {
     const leftDrawerOpen = ref(true)
 
     return {
+      
       essentialLinks: linksList,
       leftDrawerOpen,
       toggleLeftDrawer () {

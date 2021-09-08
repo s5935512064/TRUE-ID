@@ -24,7 +24,7 @@
               color="black"
               class="q-py-md border-none outline-none"
               v-model="model" 
-              mask="####-##-## - ####-##-##" 
+              mask="yyyy-MM-dd - yyyy-MM-dd" 
               :rules="['date']"              
               >
             
@@ -51,7 +51,6 @@
 
 <script>
 import { ref } from 'vue';
-// import CoinDrawer from './CoinDrawer.vue';
 import CoinTable from './CoinTable.vue';
 import CoinDrawer from './CoinDrawer.vue';
 

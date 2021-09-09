@@ -1,3 +1,4 @@
+/* eslint-disable vue/valid-v-model */
 <template>
   <div class="q-pa-xl">
       <span class="text-h6 text-weight-bold">รายการผู้เล่น</span>
@@ -23,18 +24,26 @@
               bg-color="white"
               color="black"
               class="q-py-md border-none outline-none"
+<<<<<<< Updated upstream
               v-model="modelInString" 
               mask="####-##-## - ####-##-##" 
                            
+=======
+              v-model="date"
+>>>>>>> Stashed changes
               >
             
           <template v-slot:append>
             <q-icon name="event" class="cursor-pointer">
               <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">
+<<<<<<< Updated upstream
                   <q-date 
                   v-model="model" 
                   range
                   @update:model-value="onCalendarSelected">
+=======
+                  <q-date v-model="date" range>
+>>>>>>> Stashed changes
                     <div class="row items-center justify-end">
                       <q-btn v-close-popup label="Close" color="primary" flat />
                     </div>
@@ -45,6 +54,7 @@
           </q-input>
         </div>
      </div>
+
       <player-table />
 
     </div>
@@ -58,6 +68,7 @@ import PlayerTable from './PlayerTable.vue';
   components: { 
     PlayerTable 
   },
+<<<<<<< Updated upstream
     setup () {
       const model = ref(null);
       const modelInString = ref('');
@@ -72,6 +83,15 @@ import PlayerTable from './PlayerTable.vue';
         model,
         onCalendarSelected,
         modelInString,
+=======
+  setup () {
+      const date = ref({from:'30',to:'50'});
+      const dateShow =  JSON.stringify(date);
+      console.log(dateShow);
+      return {
+        date,
+        dateShow, 
+>>>>>>> Stashed changes
       }
     }
   }

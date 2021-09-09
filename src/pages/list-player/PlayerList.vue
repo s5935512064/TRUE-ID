@@ -68,7 +68,6 @@ import PlayerTable from './PlayerTable.vue';
   components: { 
     PlayerTable 
   },
-<<<<<<< Updated upstream
     setup () {
       const model = ref(null);
       const modelInString = ref('');
@@ -83,15 +82,6 @@ import PlayerTable from './PlayerTable.vue';
         model,
         onCalendarSelected,
         modelInString,
-=======
-  setup () {
-      const date = ref({from:'30',to:'50'});
-      const dateShow =  JSON.stringify(date);
-      console.log(dateShow);
-      return {
-        date,
-        dateShow, 
->>>>>>> Stashed changes
       }
     }
   }

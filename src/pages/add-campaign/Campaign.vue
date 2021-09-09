@@ -24,10 +24,9 @@
               color="black"
               class="q-py-md border-none outline-none"
               v-model="model" 
-              mask="yyyy-MM-dd - yyyy-MM-dd" 
+              mask="####-##-## - ####-##-##" 
               :rules="['date']"              
-              >
-            
+              > 
           <template v-slot:append>
             <q-icon name="event" class="cursor-pointer">
               <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">
@@ -44,9 +43,6 @@
      </div>
       <CampaignTable />
       <CampaignDrawer />  
-      
-     
-     
 
     </div>
 </template>
@@ -63,8 +59,6 @@ import CampaignDrawer from './CampaignDrawer.vue';
     CampaignTable,
     CampaignDrawer,
   
-  
-
   },
     setup () {
       return {

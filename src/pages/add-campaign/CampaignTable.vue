@@ -1,7 +1,6 @@
 <template>
   <div class="">  
     <div class="row items-start">
-
       <div class="col">
       <div class="q-px-md">
       <strong>Campaign Name</strong>
@@ -36,9 +35,6 @@
       hide-pagination
     />
     </div>
-
- 
-
 
  <q-footer bordered class="bg-grey-1 text-primary">
         

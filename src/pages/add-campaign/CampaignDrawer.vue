@@ -4,7 +4,7 @@
     <q-drawer
         overlay
         side="right"
-        v-model="drawerRight"
+        v-model="isOpenDrawer"
         show-if-above
         bordered
         :width="600"
@@ -18,7 +18,7 @@
                 <q-toolbar-title > 
                     <span class="text-h6 text-weight-bold">สร้าง CAMPAIGN</span>   
                 </q-toolbar-title>
-                    <q-btn flat @click="drawerRight = !drawerRight" box dense icon="close" />
+                    <q-btn flat @click= "toggleDrawer" box dense icon="close" />
             </q-toolbar>    
             <q-separator />   
                   
@@ -95,7 +95,7 @@
       <q-footer bordered class="bg-grey-1 text-primary">
         <q-tabs no-caps active-color="primary" indicator-color="transparent" class="text-grey" v-model="tab">
         <div class="q-py-sm">
-        <q-btn icon ="close" class="bg-gray-1 text-black" @click="drawerRight = !drawerRight" box dense label="ยกเลิก" />
+        <q-btn icon ="close" class="bg-gray-1 text-black" @click=" toggleDrawer" box dense label="ยกเลิก" />
         </div>
      <q-space/>
           <div class="q-py-sm">
@@ -115,6 +115,18 @@ import { ref } from 'vue'
 
 
 export default{
+  data() {
+  return {
+    isOpenDrawer : false
+  }
+},
+
+    methods: {
+      toggleDrawer() {
+
+        this.isOpenDrawer = !this.isOpenDrawer
+      }
+    },
 
 
     name:'PrizeDrawer',
@@ -129,8 +141,8 @@ export default{
              model1: ref(''),
              model2: ref(''),
              modelAdd: ref(null),
-             date: ref('00/00/0000')
-
+             date: ref('yyyy-MM-dd'),
+             tab: ref('')
 
 
         }

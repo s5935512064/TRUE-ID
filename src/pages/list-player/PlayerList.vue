@@ -23,15 +23,18 @@
               bg-color="white"
               color="black"
               class="q-py-md border-none outline-none"
-              v-model="model" 
+              v-model="modelInString" 
               mask="####-##-## - ####-##-##" 
-              :rules="['date']"              
+                           
               >
             
           <template v-slot:append>
             <q-icon name="event" class="cursor-pointer">
               <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">
-                  <q-date v-model="model" range>
+                  <q-date 
+                  v-model="model" 
+                  range
+                  @update:model-value="onCalendarSelected">
                     <div class="row items-center justify-end">
                       <q-btn v-close-popup label="Close" color="primary" flat />
                     </div>
@@ -56,8 +59,19 @@ import PlayerTable from './PlayerTable.vue';
     PlayerTable 
   },
     setup () {
+      const model = ref(null);
+      const modelInString = ref('');
+      const onCalendarSelected = (model) => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        const { from, to } = model;
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        modelInString.value = `${from} ${to}`
+      }
       return {
-        model: ref({ from: '', to: '' })
+        model,
+        onCalendarSelected,
+        modelInString,
       }
     }
   }

@@ -1,10 +1,5 @@
 <template>
-
-
-
-  <div class="q-pa-md">
-
-       
+  <div class="">  
     <div class="row items-start">
 
       <div class="col">

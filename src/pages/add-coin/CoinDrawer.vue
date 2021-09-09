@@ -4,7 +4,7 @@
     <q-drawer
         overlay
         side="right"
-        v-model="drawerRight"
+        v-model="isOpenDrawer"
         show-if-above
         bordered
         :width="600"
@@ -19,7 +19,7 @@
                 <q-toolbar-title > 
                     <span class="text-h6 text-weight-bold">สร้างสูตรผสม COIN</span>   
                 </q-toolbar-title>
-                    <q-btn flat @click="drawerRight = !drawerRight" box dense icon="close" />
+                    <q-btn flat @click=" toggleDrawer" box dense icon="close" />
             </q-toolbar>    
             <q-separator />   
                       
@@ -30,7 +30,6 @@
                 
                     <q-input outlined v-model="text3" label="สูตร"/>
             </q-card-section>
-
                       
             <q-card-section class="text-left">
                 <div class="q-pb-sm">
@@ -50,16 +49,15 @@
               </div>
 
             </q-card-section>
-
-         
+        
       <q-footer bordered class="bg-grey-1 text-primary">
         <q-tabs no-caps active-color="primary" indicator-color="transparent" class="text-grey" v-model="tab">
         <div class="q-py-sm">
-          <q-btn icon ="close" class="bg-gray-1 text-black" @click="drawerRight = !drawerRight" box dense label="ยกเลิก" />
+          <q-btn icon ="close" class="bg-gray-1 text-black" @click=" toggleDrawer" box dense label="ยกเลิก" />
           </div>
           <q-space/>
           <div class="q-py-sm">
-          <q-btn icon ="close" class="bg-primary text-white" @click="drawerRight = !drawerRight" box dense label="บันทึก" />
+          <q-btn icon ="close" class="bg-primary text-white" @click=" toggleDrawer" box dense label="บันทึก" />
           </div>
         </q-tabs>
       </q-footer>
@@ -87,6 +85,18 @@ export default{
 
 
     name:'PrizeDrawer',
+data() {
+  return {
+    isOpenDrawer : false
+  }
+},
+
+    methods: {
+      toggleDrawer() {
+
+        this.isOpenDrawer = !this.isOpenDrawer
+      }
+    },
     setup(){
 
         return{

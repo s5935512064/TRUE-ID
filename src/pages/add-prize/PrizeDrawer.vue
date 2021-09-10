@@ -40,7 +40,7 @@
         
     <strong>ชื่อของรางวัล *</strong>
           <div class="q-pa-md">
-        <q-input outlined v-model="text3" label="Voucher" />
+        <q-input outlined v-model="text" label="Voucher" />
         </div>
         
         <strong>รายละเอียด *</strong>
@@ -102,7 +102,8 @@ export default{
 
              drawerRight: ref(false),
              textareaModel: ref(''),
-             text3: ref('')
+             text: ref(''),
+             tab: ref('')
 
 
         }

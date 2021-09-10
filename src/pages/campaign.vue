@@ -5,7 +5,7 @@
         <strong>สร้าง CAMPAIGN</strong>
         <div class="row">
           <div class="col-8 col-sm-6">
-              <q-input outlined v-model="text1" placeholder="Campaign Name or Prize" > 
+              <q-input outlined v-model="text" placeholder="Campaign Name or Prize" > 
                   <template v-slot:prepend>
                    <q-icon name="search" />
                   </template>
@@ -70,10 +70,7 @@ export default {
       date2: ref(''),
       columns:ref(''),
       rows:ref(''),
-      text1: ref(''),
-      text2: ref(''),
-      text3: ref(''),
-      text4: ref(''),
+      text: ref(''),   
       ph: ref(''),
       dense: ref(false),
       drawerRight: ref(false)

@@ -1,25 +1,7 @@
 <template>
   <div class="q-pa-md">
 
-<!--
-  <div class="q-pa-md">  
-  <q-input
-               v-model="filter" 
-              style="max-width: 250px"
-              outlined
-              dense
-              bg-color="white"
-              color="black"
-              class="q-my-md border-none outline-none"
-              placeholder="ชื่อรางวัล/รายละเอียด"
-            >
-              <template v-slot:prepend>
-                <q-icon name="search" />
-              </template>
-        </q-input>   
 
-  </div>
--->
  
     <q-table
       :grid="$q.screen.xl"
@@ -28,27 +10,19 @@
       :rows="rows"
       :columns="columns"
       row-key="name"
-      :filter="filter"
+     
       hide-header
       
 
     >
-    <!--
-      <template v-slot:top-left>
-        <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
-          <template v-slot:append>
-            <q-icon name="search" />
-          </template>
-        </q-input>
-      </template>
-      -->
+
     </q-table>
   </div>
 </template>
 
 
 <script>
-import { ref } from 'vue'
+//import { ref } from 'vue'
 
 const columns = [
 
@@ -90,7 +64,7 @@ const rows = [
 export default {
   setup () {
     return {
-      filter: ref(''),
+    
       columns,
       rows
     }

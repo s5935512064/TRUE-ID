@@ -30,7 +30,7 @@
       :rows="rows"
       :columns="columns"
       row-key="name"
-      :filter="filter"
+     
       hide-header   
       v-model:pagination="pagination"
       hide-pagination

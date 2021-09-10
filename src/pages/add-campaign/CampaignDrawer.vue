@@ -137,7 +137,7 @@ export default{
              drawerRight: ref(false),
              text1: ref(''),
              text2: ref(''),
-             text3: ref(''),
+            
              model1: ref(''),
              model2: ref(''),
              modelAdd: ref(null),

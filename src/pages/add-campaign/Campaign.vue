@@ -3,6 +3,7 @@
       <span class="text-h6 text-weight-bold">สร้าง CAMPAIGN</span>
      <div class="row items-center q-gutter-x-md">
         <q-input
+            v-model="text"
               style="max-width: 350px"
               outlined
               dense
@@ -68,12 +69,10 @@ import CampaignDrawer from './CampaignDrawer.vue';
   },
     setup () {
       return {
-        model: ref({ from: '2020/07/08', to: '2020/07/17' })
+        model: ref({ from: '2020-07-08', to: '2020-07-17' }),
+        text: ref('')
       }
     }
   }
 </script>
 
-<style>
-
-</style>

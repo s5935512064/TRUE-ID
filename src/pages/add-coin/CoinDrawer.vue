@@ -8,12 +8,12 @@
         show-if-above
         bordered
         :width="600"
-        :height="auto"
+       
         :breakpoint="600"
         class="bg-grey-1">
 
       <div class="q-pa-md">
-        <q-layout container style="width:auto; height:870px;"  >
+        <q-layout container style="height:870px;"  >
         
             <q-toolbar>
                 <q-toolbar-title > 
@@ -28,7 +28,7 @@
                 <span ><strong >ชื่อสูตร *</strong></span>
                 </div>
                 
-                    <q-input outlined v-model="text3" label="สูตร"/>
+                    <q-input outlined v-model="text1" label="สูตร"/>
             </q-card-section>
                       
             <q-card-section class="text-left">
@@ -36,7 +36,7 @@
                 <span ><strong >ของรางวัล *</strong></span>
                 </div>
                 
-                    <q-input outlined v-model="text3" label="Voucher"/>
+                    <q-input outlined v-model="text2" label="Voucher"/>
             </q-card-section>
 
             <q-card-section class="text-left">
@@ -104,7 +104,8 @@ data() {
              drawerRight: ref(false),
              text1: ref(''),
              text2: ref(''),
-             dense: ref(false)
+             dense: ref(false),
+             tab: ref('')
 
         }
 

@@ -24,26 +24,18 @@
               bg-color="white"
               color="black"
               class="q-py-md border-none outline-none"
-<<<<<<< Updated upstream
               v-model="modelInString" 
               mask="####-##-## - ####-##-##" 
                            
-=======
-              v-model="date"
->>>>>>> Stashed changes
               >
             
           <template v-slot:append>
             <q-icon name="event" class="cursor-pointer">
               <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">
-<<<<<<< Updated upstream
                   <q-date 
                   v-model="model" 
                   range
                   @update:model-value="onCalendarSelected">
-=======
-                  <q-date v-model="date" range>
->>>>>>> Stashed changes
                     <div class="row items-center justify-end">
                       <q-btn v-close-popup label="Close" color="primary" flat />
                     </div>

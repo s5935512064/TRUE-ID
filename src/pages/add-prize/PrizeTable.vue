@@ -1,6 +1,5 @@
 <template>
-  <div class="q-pa-md">
-
+    <div class="q-pa-md">
     <q-table
       :grid="$q.screen.xl"
       :rows="tempRow"

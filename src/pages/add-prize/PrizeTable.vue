@@ -1,15 +1,14 @@
 <template>
     <div class="q-pa-md">
     <q-table
-      :grid="$q.screen.xl"
-      :rows="tempRow"
+      :rows="rows"
       :columns="columns"
       row-key="name"
       :filter="filter"
     >
     <template v-slot:body-cell-image = "props" >
       <q-td >
-        <q-img style="max-width: 30px" :src="`${url}/${props.row.images[0].url}`">
+        <q-img style="max-width: 30px" :src="`${url}/${props.row.images[0]?.url}`">
         </q-img>
       </q-td>
     </template>
@@ -30,14 +29,12 @@ const columns = [
 
 export default {
   props:{
-    row: Array,
+    rows: {type: Array},
   },
   setup(props) {
-    const tempRow = ref(props.row);
     const url = ref(baseURL);
     return {
       filter: ref(''),
-      tempRow,
       columns,
       url,
     }

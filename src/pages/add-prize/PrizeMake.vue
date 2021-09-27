@@ -18,11 +18,11 @@
         </q-input>
  
      </div>
-      <PrizeTable :row="rows" />
-      <PrizeDrawer/> 
+      <PrizeTable :rows="rows" />
+      <PrizeDrawer @created="refreshPrize" /> 
      
 
-    </div>
+  </div>
 </template>
 
 <script>
@@ -42,15 +42,19 @@ import { getPrize } from 'src/util/services';
         const rows = ref([]);
         onMounted(() => {
         void getPrize().then((prizes)=>{
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         rows.value = prizes;
       })
-    })
-          
+    });
+        const refreshPrize = () => {
+        void getPrize().then((prizes)=>{
+        rows.value = prizes;
+      })
+        }
       return {
         model: ref({ from: '2020/07/08', to: '2020/07/17' }),
         filter: ref(''),
         rows,
+        refreshPrize,
       }
     }
   }

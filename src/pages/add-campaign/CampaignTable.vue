@@ -24,7 +24,6 @@
      
        <div class="q-py-md">
     <q-table
-      :grid="$q.screen.xl"
       grid-header
       :rows="rows"
       :columns="columns"

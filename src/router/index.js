@@ -1,5 +1,4 @@
 import { route } from 'quasar/wrappers';
-import { StateInterface } from 'src/store';
 import {
   createMemoryHistory,
   createRouter,
@@ -18,7 +17,7 @@ import routes from './routes';
  * with the Router instance.
  */
 
-export default route<StateInterface>(function (/* { store, ssrContext } */) {
+export default route(function (/* { store, ssrContext } */) {
   const createHistory = process.env.SERVER
     ? createMemoryHistory
     : (process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory);

@@ -4,10 +4,8 @@ export const baseURL = 'https://temp01.dopeness.ml';
 
 export const getPrize = async () => {
     const prizeList = await axios.get(
-        `${baseURL}/prizes`
+        `${baseURL}/prizes?_sort=createdAt:DESC` 
     )
-
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return prizeList.data;
 };
 

@@ -39,16 +39,22 @@
     </div>
         
     <strong>ชื่อของรางวัล *</strong>
-          <div class="q-pa-md">
-        <q-input outlined v-model="text3" label="Voucher" />
-        </div>
+        <div class="q-pa-md">
         
-        <strong>รายละเอียด *</strong>
+        <q-input 
+        outlined 
+        v-model="name" 
+        label="Voucher" />
+        </div>
+    <strong>ประเภทรางวัล *</strong>
+       <div class="q-pa-md" style="max-width: 300px">
+          <q-select outlined  v-model="type" :options="options" label="Standard" />
+      </div>
+    <strong>รายละเอียด *</strong>
     <div class="q-pa-md">
     <q-input class="bg-grey-0 "
-        v-model="textareaModel"
-        filled
-        clearable
+        v-model="description"
+        outlined
         type="textarea"
         />
         
@@ -57,19 +63,12 @@
         <q-tabs no-caps active-color="primary" indicator-color="transparent" class="text-grey" v-model="tab">
           <q-btn icon ="close" class="bg-gray-1 text-black" @click="toggleDrawer" box dense label="ยกเลิก" />
           <q-space/>
-           <q-btn color="primary" label="บันทึก" />
+           <q-btn @click="createPrize" color="primary" label="บันทึก" />
         </q-tabs>
       </q-footer>
-
-      
     </q-layout>   
   </div>
-
-
- 
   </q-drawer>
-
-  
   </div>
 
   
@@ -77,36 +76,61 @@
 
 <script>
 import { ref } from 'vue'
+import { createNewPrize } from 'src/util/services';
 
+export default {
+  methods: {
+     toggleDrawer() {
 
-
-export default{
+        this.isOpenDrawer = !this.isOpenDrawer
+    },
+  },
   data() {
   return {
     isOpenDrawer : false
   }
 },
-
-    methods: {
-      toggleDrawer() {
-
-        this.isOpenDrawer = !this.isOpenDrawer
-      }
-    },
-
-
     name:'PrizeDrawer',
     setup(){
+      const name = ref('');
+      const description = ref('');
+      const tab = ref('');
+      const type = ref('');
+    
+      const createPrize = async() => {
+      const createPrizeFormat = {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        name: name.value,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        type: type.value,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        description: description.value,
+      };
 
+      const isCreatePrizeSuccess = await createNewPrize(createPrizeFormat);
+      console.log(isCreatePrizeSuccess);
+
+       if (!isCreatePrizeSuccess) {
+        console.log('การสร้างงานของท่านไม่สำเร็จ');
+      } else {
+        console.log('สร้างงานเสร็จสิ้น');
+      }
+      };
         return{
-
+  
              drawerRight: ref(false),
              textareaModel: ref(''),
-             text3: ref('')
-
-
+             text3: ref(''),
+            model: ref(null),
+            options: [
+              'point', 'voucher', 'prize',
+            ],
+             name,
+             description,
+             createPrize,
+             tab,
+             type,
         }
-
     }
 }
 

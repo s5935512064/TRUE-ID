@@ -18,7 +18,7 @@
         </q-input>
  
      </div>
-      <PrizeTable/>
+      <PrizeTable :row="rows" />
       <PrizeDrawer/> 
      
 
@@ -26,9 +26,10 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, onMounted} from 'vue';
 import PrizeTable from './PrizeTable.vue';
 import PrizeDrawer from './PrizeDrawer.vue';
+import { getPrize } from 'src/util/services';
 
 
   export default {
@@ -38,9 +39,18 @@ import PrizeDrawer from './PrizeDrawer.vue';
    
   },
     setup () {
+        const rows = ref([]);
+        onMounted(() => {
+        void getPrize().then((prizes)=>{
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        rows.value = prizes;
+      })
+    })
+          
       return {
         model: ref({ from: '2020/07/08', to: '2020/07/17' }),
         filter: ref(''),
+        rows,
       }
     }
   }

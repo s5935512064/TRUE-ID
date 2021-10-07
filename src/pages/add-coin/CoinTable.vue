@@ -1,10 +1,7 @@
 <template>
 
-
-
   <div class="q-pa-md">
 
-       
     <div class="row items-start">
 
       <div class="col">
@@ -42,10 +39,7 @@
     />
     </div>
 
- 
-
-
- <q-footer bordered class="bg-grey-1 text-primary">
+    <q-footer bordered class="bg-grey-1 text-primary">
         
              <div class="row justify-left q-px-md">
       <q-pagination
@@ -55,8 +49,7 @@
         size="md"
       />
     </div>
-        
-      </q-footer>
+    </q-footer>
   
   </div>
 </template>

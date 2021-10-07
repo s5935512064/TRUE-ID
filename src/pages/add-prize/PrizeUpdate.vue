@@ -1,11 +1,7 @@
 <template>
-  <div class="">
-    <q-btn    @click="toggleDrawer" 
-                style="width: 150px" 
-                color="negative" 
-                text-color="white" 
-                label="สร้างของรางวัล"></q-btn>
+    <div class="">
     <q-drawer
+      ref="leftDrawer"
       overlay
       side="right"
       v-model="isOpenDrawer"
@@ -71,16 +67,16 @@
                 label="ยกเลิก"
               />
               <q-space />
-              <q-btn @click="createPrize" color="primary" label="บันทึก" />
+              <q-btn @click="updatePrize" color="primary" label="แก้ไขรางวัล" />
           </div>
       </div>
     </q-drawer>
   </div>
 </template>
 
-<script lang="js">
+<script>
 import { ref } from 'vue'
-import { createNewPrize } from 'src/util/services';
+import { updatePrize } from 'src/util/services';
 
 export default {
   methods: {
@@ -89,44 +85,49 @@ export default {
     },
   },
     setup(props,{emit}){
+      
       const name = ref('');
       const description = ref('');
       const type = ref('');
 
-      const createPrize = async() => {
-      const createPrizeFormat = {
+      const updatePrize = async() => {
+          const {
+              id,
+              name,
+              type,
+              description
+          } = props.rowData;
+      const PrizeFormat = {
         name: name.value,
         type: type.value,
         description: description.value,
       };
 
-      const isCreatePrizeSuccess = await createNewPrize(createPrizeFormat);
-      console.log(isCreatePrizeSuccess);
+      const PrizeUpdate = await updatePrize(PrizeFormat);
+      console.log(PrizeUpdate);
 
-       if (!isCreatePrizeSuccess) {
-        console.log('การสร้างงานของท่านไม่สำเร็จ');
+       if (!PrizeUpdate) {
+        console.log('แก้ไขไม่สำเร็จ');
       } else {
-        console.log('สร้างงานเสร็จสิ้น');
-        emit("created");
+        console.log('แก้ไขงานเสร็จสิ้น');
+        emit("ีupdated");
       }
       };
         return{
-             textareaModel: ref(''),
-             text3: ref(''),
-              model: ref(null),
-              options: [
-              'point', 'voucher', 'prize',
-              ],
+            textareaModel: ref(''),
+            text3: ref(''),
+            model: ref(null),
+            options: ref(),
              name,
              description,
-             createPrize,
              type,
+             updatePrize,
              isOpenDrawer: ref(false)
         }
     }
 }
 </script>
 
-<style lang="scss" scoped>
+<style>
 
 </style>

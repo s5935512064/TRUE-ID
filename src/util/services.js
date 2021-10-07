@@ -15,3 +15,17 @@ export const createNewPrize = async (format) => {
     );
     return isCreated;
 }
+
+export const deletePrize = async (id) => {
+    const isDeleted = await axios.delete(
+        `${baseURL}/prizes/${id}`
+    );
+    return isDeleted;
+}
+
+export const updatePrize = async (id, format) => {
+    const updated = await Request.put(
+        `${baseURL}/prizes` , format
+    );
+    return updated;
+};

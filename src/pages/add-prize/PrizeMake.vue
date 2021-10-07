@@ -1,7 +1,8 @@
 <template>
-  <div class="q-pa-xl">
-      <span class="text-h6 text-weight-bold">รางวัล</span>
-     <div class="row items-center q-gutter-x-md">
+  <div class="q-pa-lg">
+     <span class="text-h5 text-weight-bold">รางวัล</span>
+     <div class="row justify-between q-my-sm">
+       <div class="col">
         <q-input
               v-model="filter" 
               style="max-width: 350px"
@@ -9,19 +10,24 @@
               dense
               bg-color="white"
               color="black"
-              class="q-my-md border-none outline-none"
+              class="border-none outline-none"
               placeholder="ชื่อรางวัล/รายละเอียด"
             >
               <template v-slot:prepend>
                 <q-icon name="search" />
               </template>
         </q-input>
- 
+       </div>
+       <div class="col">
+         <div class="row justify-end">
+            <PrizeDrawer @created="refreshPrize" /> 
+         </div>
+       </div> 
      </div>
-      <PrizeTable :rows="rows" />
-      <PrizeDrawer @created="refreshPrize" /> 
+          
+      <PrizeTable :rows="rows" @deleted="refreshPrize" />
+      
      
-
   </div>
 </template>
 
@@ -46,10 +52,11 @@ import { getPrize } from 'src/util/services';
       })
     });
         const refreshPrize = () => {
-        void getPrize().then((prizes)=>{
-        rows.value = prizes;
+          void getPrize().then((prizes)=>{
+          rows.value = prizes;
       })
         }
+
       return {
         model: ref({ from: '2020/07/08', to: '2020/07/17' }),
         filter: ref(''),
@@ -60,6 +67,6 @@ import { getPrize } from 'src/util/services';
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 </style>

@@ -3,11 +3,13 @@
 
     <q-header reveal elevated class="bg-negative text-white">
       <q-toolbar>
-        <!-- <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" /> -->
-        <q-toolbar-title class="q-mx-md">
-          <q-avatar style="width: 60px">
+         <q-btn flat
+                v-show="!leftDrawer"
+                @click="leftDrawer = !leftDrawer" round dense icon="menu" />
+        <q-toolbar-title class="q-mx-sm">
+          <q-btn @click="$router.push('/createcampaign')" flat style="width: 60px">
             <img src="~src/assets/logo.svg">
-          </q-avatar>
+          </q-btn>
         </q-toolbar-title>
         <div class="q-mx-md q-gutter-x-sm">
           <q-btn flat round dense icon="notifications"/>
@@ -19,7 +21,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer show-if-above class="bg-dark text-white" v-model="leftDrawer" side="left" elevated>
+    <q-drawer show-if-above :breakpoint="500" class="bg-dark text-white" v-model="leftDrawer" side="left" elevated>
       <q-list separator>
         <EssentialLink
           v-for="link in essentialLinks"
@@ -39,13 +41,14 @@
 
 <script>
 import EssentialLink from 'components/EssentialLink.vue';
+import { useQuasar } from 'quasar'
 import { ref } from 'vue'
 
 export default {
 
    data() {
   return {
-    leftDrawer : true
+    leftDrawer : ref(false)
   }
 },
 
@@ -54,6 +57,7 @@ export default {
     EssentialLink,
   },
   setup () {
+    const $q = useQuasar()
     const linksList = [
       {
         title: 'สร้าง Campaign',
@@ -102,6 +106,7 @@ export default {
         leftDrawerOpen.value = !leftDrawerOpen.value
       }
     }
+    $q.platform.is.mobile
   }
 }
 </script>

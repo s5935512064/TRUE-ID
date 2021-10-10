@@ -55,16 +55,17 @@
         </div>
      </div>
      
-      <CampaignTable />
+      <CampaignTable :row="rows"/>
  
 
     </div>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, onMounted} from 'vue';
 import CampaignTable from './CampaignTable.vue';
 import CampaignDrawer from './CampaignDrawer.vue';
+import { getCampaign } from 'src/util/services';
 
 
   export default {
@@ -83,13 +84,23 @@ import CampaignDrawer from './CampaignDrawer.vue';
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         modelInString.value = `${from} ${to}`
       }
-
+      const rows = ref([]);
+      
+      onMounted(() => {
+        void getCampaign().then((campaign)=>{
+        rows.value = campaign;
+        console.log("checkdata",rows)
+        
+      })
+    });
+  
       return {
 
         filter: ref(''),
         model,
         onCalendarSelected,
         modelInString,
+        rows,
       }
     }
   }

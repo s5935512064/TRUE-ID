@@ -58,7 +58,6 @@ import { getPrize } from 'src/util/services';
         }
 
       return {
-        model: ref({ from: '2020/07/08', to: '2020/07/17' }),
         filter: ref(''),
         rows,
         refreshPrize,

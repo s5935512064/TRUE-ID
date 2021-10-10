@@ -1,137 +1,51 @@
 <template>
-  <div class="">  
-    <div class="row items-start">
-      <div class="col">
-      <div class="q-px-md">
-      <strong>Campaign Name</strong>
-      </div>     
-      </div>
-
-      <div class="col">
-      <div class="q-px-xl">
-       <strong>Prize</strong>
-      </div>
-      </div>
-
-      <div class="col">
-      <div class="q-px-xl">
-      <strong>Period</strong>
-      </div>
-      </div>
-
-    </div>
-
-     
-       <div class="q-py-md">
+    <div class="q-py-md">
     <q-table
-      grid-header
+      class="my-sticky-header-table"
       :rows="rows"
       :columns="columns"
-      row-key="name"
-      filter="filter"
-      hide-header   
+      
+      :filter="filter"
       v-model:pagination="pagination"
       hide-pagination
-    />
+    >
+    </q-table>
     </div>
 
- <q-footer bordered class="bg-grey-1 text-primary">
-        
-             <div class="row justify-left q-px-md">
-      <q-pagination
-        v-model="pagination.page"
-        color="red-8"
-        :max="pagesNumber"
-        size="md"
-      />
-    </div>
-        
-      </q-footer>
-  
-  </div>
+
 </template>
 
 <script>
 import { ref, computed } from 'vue'
+import { baseURL } from 'src/util/services';
 
 const columns = [
 
-  { name: 'campaignname',align: 'left',  label: 'Campaign Name', field: 'campaignname', sortable: true },
-  { name: 'prize', align: 'center', label: 'Prize', field: 'prize', sortable: true },
-  { name: 'period',align: 'right', label: 'Period', field: 'period', sortable: true },
+  { name: 'name',align: 'center', label: 'ชื่อรางวัล', field: 'name', sortable: true },
  
 ]
 
-const rows = [
-  {
-   
-    campaignname: 'Campaign A',
-    prize: 'Iphone 12 Pro',
-    period: '20/02/2021'
-   
-  },
-  {
-   
-    campaignname:'Campaign B',
-    prize: 'Nokia 3310',
-    period: '25/09/2021'
-    
-  },
-  {
-   
-    campaignname: 'Campaign C',
-    prize: 'Iphone 12 Pro',
-    period: '22/11/2021'
-   
-  },
-  {
-   
-    campaignname: 'Campaign D',
-    prize: 'Samsung 5F',
-    period: '11/08/2021'
-    
-  },
-  {
-   
-    campaignname: 'Campaign D',
-    prize: 'Samsung 5F',
-    period: '11/08/2021'
-    
-  },
-  {
-   
-    campaignname: 'Campaign D',
-    prize: 'Samsung 5F',
-    period: '11/08/2021'
-    
-  },
-  {
-   
-    campaignname: 'Campaign D',
-    prize: 'Samsung 5F',
-    period: '11/08/2021'
-    
-  },
-
-  
-]
-
 export default {
-  setup () {
+  props:{
+    rows: {type: Array},
+  },
+  setup (props,{emit}) {
+    const url = ref(baseURL);
     const pagination = ref({
       sortBy: 'desc',
       descending: false,
       page: 1,
-      rowsPerPage: 3
+      rowsPerPage: 7
       // rowsNumber: xx if getting data from a server
-    })
+    });
 
     return {
-      pagination,
+      filter: ref(''),
       columns,
-      rows,
+      current: ref(3),
+      pagination,
+      pagesNumber: computed(() => Math.ceil(props.rows.length / pagination.value.rowsPerPage)),
 
-      pagesNumber: computed(() => Math.ceil(rows.length / pagination.value.rowsPerPage))
     }
   }
 }

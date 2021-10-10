@@ -21,7 +21,6 @@
       <q-td>
         <div class="row justify-center">
           <q-btn flat icon="more_vert">
-    
               <q-popup-edit
                 style="padding: 0; margin: 0"
                 v-model.number="props.row.action"

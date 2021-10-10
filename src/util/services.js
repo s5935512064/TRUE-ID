@@ -21,6 +21,13 @@ export const getPrize = async () => {
     return prizeList.data;
 };
 
+export const getCampaign = async () => {
+    const campaignsList = await axios.get(
+        `${baseURL}/campaigns?_sort=createdAt:DESC` 
+    )
+    return campaignsList.data;
+};
+
 export const createNewPrize = async (format) => {
     const isCreated = await axios.post(
         `${baseURL}/prizes` , format

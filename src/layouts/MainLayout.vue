@@ -18,6 +18,8 @@
           </q-avatar>
           <span>Admin</span>
         </div>
+        <q-btn flat dense no-caps @click="logout">
+          <q-icon name="logout" size="xs" class="q-mr-sm"/>Logout</q-btn>
       </q-toolbar>
     </q-header>
 
@@ -51,8 +53,14 @@ export default {
     leftDrawer : ref(false)
   }
 },
+  methods: {
+    logout() {
+      const authen = false;
+      localStorage.setItem("isAuthenticated", authen);
+      this.$router.replace("/login");
+    },
+  },
 
- 
   components: {
     EssentialLink,
   },

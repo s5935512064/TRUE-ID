@@ -1,11 +1,14 @@
 <template>
-  <div>
-  </div>
+  <Campaign></Campaign>
 </template>
 
 <script>
-export default {
+import Campaign from 'src/pages/add-campaign/Campaign.vue' 
 
+export default {
+  components: {
+    Campaign,
+  }
 }
 </script>
 

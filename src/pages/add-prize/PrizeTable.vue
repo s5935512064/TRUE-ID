@@ -34,7 +34,7 @@
                       <span class="q-mx-xs">
                       <q-icon name="edit"></q-icon>
                       </span>
-                      <q-item-section @click="$refs.leftDrawer">แก้ไข</q-item-section>
+                      <q-item-section v-close-popup @click="updateClick(props.row)">แก้ไข</q-item-section>
                     </div>
                   </q-item>
 
@@ -65,7 +65,10 @@
       />
     </div>
 
-    <PrizeUpdate />
+    <PrizeUpdate 
+      v-show="isShowDialog === 'update'"
+      ref="updateClick"
+      :rowData="actionType"/>
 
   </div>
 </template>
@@ -91,13 +94,24 @@ export default {
   components: { 
     PrizeUpdate,
   },
+  methods: {
+     updateClick(rowData) {
+        console.log(rowData)
+        this.isShowDialog = "update";
+        this.$refs.updateClick.toggleDrawer();
+        this.actionType = rowData;
+        this.$emit("updatePrize", rowData);
+    },
+  },
   setup(props, {emit}) {
+      const isShowDialog = ref(null);
+      const actionType = ref(null);
+      const isDeletePrize = async(id) => {
 
-    const isDeletePrize = async(id) => {
       const isconfirmDeletePrize = confirm("ต้องการลบของรางวัลนี้หรือไม่");
-
       if(isconfirmDeletePrize){
         const isDeleteSuccess = await deletePrize(id);
+        
         if (isDeleteSuccess) {
           console.log('ลบรางวัลเสร็จสิ้น');
           emit("deleted")
@@ -124,10 +138,9 @@ export default {
       url,
       pagesNumber: computed(() => Math.ceil(props.rows.length / pagination.value.rowsPerPage)),
       isDeletePrize,
+      actionType,
+      isShowDialog
 
-      toggleDrawer (rowData) {
-        emit("toggle", rowData)
-      },
     }
   }
 }

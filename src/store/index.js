@@ -1,11 +1,10 @@
-import { store } from 'quasar/wrappers'
-import { InjectionKey } from 'vue'
-import {
-  createStore,
-  Store as VuexStore,
-  useStore as vuexUseStore,
-} from 'vuex'
+import { store } from "quasar/wrappers";
+import { createStore } from "vuex";
+import createPersistedState from "vuex-persistedstate";
+import user from "./user";
 
+
+// import example from './module-example'
 
 /*
  * If not building with SSR mode, you can
@@ -16,28 +15,18 @@ import {
  * with the Store instance.
  */
 
-
-
-// provide typings for `this.$store`
-
-
-// provide typings for `useStore` helper
-export const storeKey = Symbol('vuex-key')
-
-export default store(function (/* { ssrContext } */) {
+export default store((/* { ssrContext } */) => {
   const Store = createStore({
+    plugins: [createPersistedState()],
     modules: {
+      user,
       // example
     },
 
     // enable strict mode (adds overhead!)
     // for dev mode and --debug builds only
-    strict: !!process.env.DEBUGGING
-  })
+    strict: process.env.DEBUGGING,
+  });
 
   return Store;
-})
-
-export function useStore() {
-  return vuexUseStore(storeKey)
-}
+});

@@ -1,11 +1,14 @@
 <template>
-
-   <div class="q-pa-xl">
+   <div class="">
+     <q-btn    @click="toggleDrawer" 
+                style="width: 150px" 
+                color="negative" 
+                text-color="white" 
+                label="สร้าง Campaign"></q-btn>
     <q-drawer
         overlay
         side="right"
         v-model="isOpenDrawer"
-        show-if-above
         bordered
         :width="600"
         :breakpoint="600"
@@ -112,29 +115,17 @@
 <script>
 import { ref } from 'vue'
 
-
-
 export default{
-  data() {
-  return {
-    isOpenDrawer : false
-  }
-},
-
     methods: {
       toggleDrawer() {
-
         this.isOpenDrawer = !this.isOpenDrawer
       }
     },
 
-
     name:'PrizeDrawer',
     setup(){
-
         return{
-
-             drawerRight: ref(false),
+            isOpenDrawer: ref(false),
              text1: ref(''),
              text2: ref(''),
              text3: ref(''),

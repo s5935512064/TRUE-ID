@@ -1,7 +1,6 @@
 <template>
     <div class="">
     <q-drawer
-      ref="leftDrawer"
       overlay
       side="right"
       v-model="isOpenDrawer"
@@ -79,8 +78,12 @@ import { ref } from 'vue'
 import { updatePrize } from 'src/util/services';
 
 export default {
+  props: {
+    rowData: Object,
+  },
   methods: {
      toggleDrawer() {
+        console.log("test", this.$props.rowData);
         this.isOpenDrawer = !this.isOpenDrawer
     },
   },
@@ -90,29 +93,6 @@ export default {
       const description = ref('');
       const type = ref('');
 
-      const updatePrize = async() => {
-          const {
-              id,
-              name,
-              type,
-              description
-          } = props.rowData;
-      const PrizeFormat = {
-        name: name.value,
-        type: type.value,
-        description: description.value,
-      };
-
-      const PrizeUpdate = await updatePrize(PrizeFormat);
-      console.log(PrizeUpdate);
-
-       if (!PrizeUpdate) {
-        console.log('แก้ไขไม่สำเร็จ');
-      } else {
-        console.log('แก้ไขงานเสร็จสิ้น');
-        emit("ีupdated");
-      }
-      };
         return{
             textareaModel: ref(''),
             text3: ref(''),

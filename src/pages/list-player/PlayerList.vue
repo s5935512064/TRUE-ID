@@ -18,7 +18,7 @@
         </q-input>
         <span>ช่วงเวลา</span>
         <div style="width: 300px">
-          <q-input
+            <q-input
               outlined
               dense
               bg-color="white"

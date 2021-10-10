@@ -34,5 +34,22 @@ export default route(function (/* { store, ssrContext } */) {
     ),
   });
 
+  Router.beforeEach((to, from, next) => {
+    let isAuthenticated = localStorage.getItem("isAuthenticated");
+    console.log({
+      to,
+      from,
+      isAuthen: isAuthenticated,
+    });
+
+    isAuthenticated = isAuthenticated === "true";
+
+    console.log(isAuthenticated);
+
+    if (to.path !== "/login" && !isAuthenticated) {
+      next({ path: "login" });
+    } else next();
+  });
+
   return Router;
 });

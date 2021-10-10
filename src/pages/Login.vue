@@ -3,7 +3,7 @@
         <div class="absolute-center q-pa-xs" style="max-width: 500px">
                 <div class="column items-center q-gutter-y-md">
                 <q-img style="width: 200px" src="~src/assets/profile.png"></q-img>
-                <q-input class="full-width" label="@username" bg-color="white" rounded outlined v-model="text">
+                <q-input class="full-width" label="@username" bg-color="white" rounded outlined v-model="userName">
                     <template v-slot:prepend>
                     <q-avatar>
                         <q-icon size="md" name="person"></q-icon>
@@ -26,6 +26,7 @@
                     </template>
                 </q-input>
                 <q-btn  rounded outlined
+                        @click="authorization"
                         size="15px"
                         class="q-px-xl q-py-sm"
                         color="negative" label="Login" />
@@ -37,14 +38,54 @@
 </template>
 
 <script>
+import { login } from 'src/util/services';
+import { initUserAction } from 'src/store/user/constant';
+import { User } from 'src/store/user/vo/user.vo';
+import { initUserDTO } from 'src/store/user/dto/action/user.dto';
 import { ref } from 'vue';
 
 export default {
-    setup () {
+    components: {},
+  name: "Login",
+  data() {
     return {
-      text: ref(''),
-      password: ref(''),
+      userName: null,
+      password: null,
+    };
+  },
+  methods: {
+    async authorization() {
+      const user = await login({
+        username: this.userName,
+        pass: this.password,
+      });
+      if (!user) {
+        alert("invalid user");
+        return;
+      }
+
+      const userVo = User({
+        id: user.user.id,
+        username: user.user.username,
+        email: user.user.email,
+        isconfirmed: user.user.confirmed,
+        userToken: user.jwt,
+      });
+
+      localStorage.setItem("isAuthenticated", user.user.confirmed);
+      localStorage.setItem("userToken", user.jwt);
+
+      this.$store.dispatch(initUserAction, initUserDTO({ userVo }));
+
+      this.$router.push("/");
+    },
+  },
+
+    setup () {
+
+    return {
       isPwd: ref(true),
+
     }
   }
 }

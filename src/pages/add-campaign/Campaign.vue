@@ -55,7 +55,7 @@
         </div>
      </div>
      
-      <CampaignTable :row="rows"/>
+      <CampaignTable :rows="rows"/>
  
 
     </div>

@@ -4,7 +4,6 @@
       class="my-sticky-header-table"
       :rows="rows"
       :columns="columns"
-      
       :filter="filter"
       v-model:pagination="pagination"
       hide-pagination
@@ -16,7 +15,7 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { baseURL } from 'src/util/services';
 
 const columns = [

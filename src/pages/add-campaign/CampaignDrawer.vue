@@ -114,16 +114,38 @@
 
 <script>
 import { ref } from 'vue'
+import { createCampaign } from 'src/util/services';
 
 export default{
-    methods: {
+  props:{
+      rows: {type: Array},
+    },
+  methods: {
       toggleDrawer() {
         this.isOpenDrawer = !this.isOpenDrawer
       }
     },
-
     name:'PrizeDrawer',
-    setup(){
+    setup(props,{emit}){
+
+      const createPrize = async() => {
+      const createPrizeFormat = {
+        name: name.value,
+        type: type.value,
+        description: description.value,
+      };
+
+      const isCreatePrizeSuccess = await createNewPrize(createPrizeFormat);
+      console.log(isCreatePrizeSuccess);
+
+       if (!isCreatePrizeSuccess) {
+        console.log('การสร้างงานของท่านไม่สำเร็จ');
+      } else {
+        console.log('สร้างงานเสร็จสิ้น');
+        emit("created");
+      }
+      };
+
         return{
             isOpenDrawer: ref(false),
              text1: ref(''),

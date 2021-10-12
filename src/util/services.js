@@ -35,6 +35,13 @@ export const createNewPrize = async (format) => {
     return isCreated;
 }
 
+export const createCampaign = async (format) => {
+    const isCreated = await axios.post(
+        `${baseURL}/campaigns` , format
+    );
+    return isCreated;
+}
+
 export const deletePrize = async (id) => {
     const isDeleted = await axios.delete(
         `${baseURL}/prizes/${id}`
